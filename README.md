@@ -1,80 +1,79 @@
-<h1>Customer Churn Prediction Project</h1>
+Customer Churn Prediction Project
+Project Overview
 
-<h2>Project Overview</h2>
-This project aims to develop a predictive model that classifies customers of a subscription-based service based on their risk of churning—i.e., discontinuing their subscription. By analyzing customer data, the goal is to uncover key factors influencing churn and provide actionable insights to help businesses improve retention. This model will enable businesses to identify at-risk customers early, allowing for targeted retention strategies that can reduce churn and enhance customer satisfaction.
+This project aims to predict customer churn for a subscription-based service. By analyzing customer data, including usage metrics, service plans, and customer demographics, the model identifies high-risk customers who are likely to discontinue their subscription. Early identification of such customers enables businesses to implement targeted retention strategies, ultimately reducing churn and improving customer satisfaction.
+Objective
 
-<h2>Objective</h2>
 The core objectives of this project are:
 
-Predict Customer Churn: Develop a model that classifies customers as high-risk or low-risk for churn.
-Identify Key Churn Drivers: Determine the most important factors (such as customer demographics, usage patterns, and engagement) associated with churn.
-Provide Actionable Insights: Offer insights on customer behavior to help businesses create effective retention strategies and proactively address the needs of at-risk customers.
+    Predict Customer Churn: Develop a machine learning model to classify customers as high-risk or low-risk for churn.
+    Identify Key Churn Drivers: Determine key factors influencing churn, such as customer behavior and service usage patterns.
+    Provide Actionable Insights: Offer insights to help businesses develop targeted strategies for customer retention.
+
 Technologies Used
-Programming Language: Python
 
-<h2>Libraries:</h2>
+    Programming Language: Python
+    Libraries:
+        pandas: Data manipulation and analysis
+        numpy: Efficient numerical operations
+        matplotlib & seaborn: Data visualization for exploratory data analysis (EDA) and model insights
+        scikit-learn: Machine learning models, data preprocessing, and evaluation
+        joblib: Model saving for deployment
 
-pandas: Data manipulation and analysis
-numpy: Efficient numerical operations
-matplotlib & seaborn: Data visualization for exploratory data analysis (EDA) and model insights
-scikit-learn (sklearn): Building machine learning models, data preprocessing, and evaluation
-tensorflow: For building and training neural network models
 Data Description
-The dataset includes customer information from a subscription-based service, with each row representing a customer. The dataset consists of various demographic, service usage, and contract-related attributes that could influence churn:
 
-Demographic Attributes: Gender, SeniorCitizen status, Partner status, Dependents
-Service Usage Attributes: Tenure (months of service), PhoneService, MultipleLines, InternetService type, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport, StreamingTV, and StreamingMovies
-Contract & Billing Attributes: Contract type, PaperlessBilling, PaymentMethod, MonthlyCharges, and TotalCharges
-Churn Indicator: The target variable (Yes/No) indicating if the customer has churned
+The dataset consists of customer information for a subscription-based service. Each row represents a customer, and includes demographic, service usage, and billing attributes, along with the target variable that indicates whether the customer has churned.
+Key Attributes:
 
-<h2>Approach</h2>
-#1. Data Preprocessing
-Preprocessing ensures data consistency, cleanliness, and readiness for model training. Key steps include:
+    Demographic: Gender, SeniorCitizen status, Partner status, Dependents
+    Service Usage: Tenure, PhoneService, InternetService, OnlineSecurity, DeviceProtection, StreamingTV, StreamingMovies, etc.
+    Contract & Billing: Contract type, PaperlessBilling, PaymentMethod, MonthlyCharges, TotalCharges
+    Target Variable: Churn (Yes/No)
 
-Handling Missing Values: Clean and convert the TotalCharges column, which may contain missing or non-numeric values, to numerical data.
-Encoding Categorical Variables: Transform categorical variables (e.g., gender, partner status, payment method) into numerical representations using one-hot encoding or label encoding.
-Feature Scaling: Normalize or standardize numerical variables (e.g., MonthlyCharges, Tenure) to ensure they are on a comparable scale.
+Approach
+1. Data Preprocessing
 
-#2. Exploratory Data Analysis (EDA)
-EDA uncovers patterns and relationships within the data, laying the groundwork for feature selection and hypothesis generation.
+The data is preprocessed to ensure it is clean and ready for model training:
 
-Visualize Distributions and Relationships: Plot the distribution of key variables to see how customer segments differ and how churn varies across demographics and service types.
-Analyze Correlations: Identify correlations between features and churn using correlation heatmaps and pair plots.
-Churn Analysis: Examine churn behavior within different customer segments (e.g., by contract type, tenure, internet service type) to identify high-risk groups.
+    Handling missing values, especially in the TotalCharges column.
+    Encoding categorical variables using one-hot encoding.
+    Scaling numerical features (e.g., MonthlyCharges, Tenure) for consistency.
 
-#3. Model Development
-Train multiple machine learning models and select the best one for predicting churn.
+2. Exploratory Data Analysis (EDA)
 
-Model Selection: Train various algorithms, each with unique strengths:
-Logistic Regression: Baseline model for binary classification and interpretability.
-Decision Trees & Random Forests: Capture non-linear relationships and interactions between features.
-Gradient Boosting Machines (GBM): Often provide superior predictive power with strong control over model complexity.
-Neural Networks: Implemented with TensorFlow to capture complex patterns in larger datasets.
-Hyperparameter Tuning: Use techniques like grid search or random search to fine-tune model parameters for optimal performance.
+EDA is used to uncover patterns and relationships within the data:
 
-#4. Model Evaluation
-Evaluate the model's effectiveness and reliability in predicting churn.
+    Distribution and relationships between features are visualized to understand churn behavior across demographics and service usage.
+    Correlation heatmaps and pair plots help identify strong relationships between features and churn.
 
-Metrics: Assess model performance using relevant classification metrics:
-Accuracy: Overall proportion of correctly classified cases.
-Precision, Recall, and F1-score: Especially useful for handling class imbalance.
-ROC-AUC: Measures the model’s ability to distinguish between classes.
-Confusion Matrix Analysis: Examine false positives and false negatives to understand the potential costs of misclassification.
-Feature Importance Analysis: Identify the most influential factors on churn using techniques like SHAP values or feature importance plots for tree-based models.
+3. Model Development
 
-#5. Results and Insights
-Summarize the model’s performance and derive actionable insights based on predictions and feature analysis:
+A variety of machine learning algorithms are trained to predict churn:
 
-Model Performance Summary: Present an overview of how each model performed on the test set, highlighting the final selected model.
-Churn Drivers: Identify key factors influencing churn (e.g., contract type, tenure, monthly charges, internet service type).
-Actionable Recommendations: Suggest strategies to improve retention based on the identified factors, such as:
-Flexible Contracts: Incentivize customers with monthly contracts to switch to long-term contracts.
-Customer Engagement: Enhance customer engagement through value-added services like tech support or bundled services to retain high-risk customers.
+    Random Forest Classifier is used for its robustness in handling non-linear relationships.
+    The model is evaluated using performance metrics like accuracy, precision, recall, F1-score, and ROC-AUC to measure its ability to distinguish between churned and non-churned customers.
 
-<h2>Final Deliverables</h2>
-Predictive Model: A trained and validated model that classifies customers as high-risk or low-risk for churn.
-Feature Insights: A report on the key drivers of churn, enabling targeted retention efforts.
-Retention Recommendations: Data-driven insights for customer retention strategies that the business can implement.
+4. Model Evaluation
 
-<h2>Conclusion</h2>
-This project demonstrates the power of data analytics and machine learning in predicting customer behavior. By understanding and predicting churn, businesses can take proactive measures to retain customers and enhance their overall strategy. The developed model serves as a valuable tool for subscription-based services looking to improve customer retention and satisfaction.
+Model performance is assessed using:
+
+    Classification Report: Precision, recall, F1-score for both classes (churned and non-churned).
+    Confusion Matrix: Analyzes true positives, false positives, and misclassifications.
+    ROC Curve and AUC: Evaluates the model's ability to separate churn and non-churn customers.
+
+5. Results and Insights
+
+The final model provides actionable insights:
+
+    Churn Drivers: Features such as contract type, service tenure, and monthly charges are key indicators of churn.
+    Recommendations: Businesses can implement strategies like offering long-term contracts or improving customer engagement to reduce churn.
+
+Final Deliverables
+
+    Predictive Model: A trained Random Forest model capable of predicting customer churn.
+    Insights Report: A summary of the key drivers of churn and retention strategies.
+    Retention Recommendations: Data-driven suggestions for businesses to improve customer retention.
+
+Conclusion
+
+This project demonstrates the potential of machine learning in solving real-world business problems like customer churn prediction. The model and insights provide actionable strategies to help businesses retain customers and enhance satisfaction, making this a valuable tool for subscription-based services.
